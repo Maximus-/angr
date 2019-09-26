@@ -12,6 +12,7 @@ from .linux import SimLinux
 from .cgc import SimCGC
 from .windows import SimWindows
 from .javavm import SimJavaVM
+from .darwin import SimDarwin
 
 os_mapping = defaultdict(lambda: SimOS)
 
@@ -27,3 +28,4 @@ for k, v in _DESCR_EI_OSABI.items():
 register_simos('windows', SimWindows)
 register_simos('cgc', SimCGC)
 register_simos('javavm', SimJavaVM)
+register_simos('darwin', SimDarwin)
