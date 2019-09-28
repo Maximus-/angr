@@ -1374,6 +1374,7 @@ SYSCALL_CC = {
     'AMD64': {
         'default': SimCCAMD64LinuxSyscall,
         'Linux': SimCCAMD64LinuxSyscall,
+        'Darwin': SimCCAMD64LinuxSyscall,
         'Windows': SimCCAMD64WindowsSyscall,
     },
     'ARMEL': {
@@ -1391,6 +1392,7 @@ SYSCALL_CC = {
     'AARCH64': {
         'default': SimCCAArch64LinuxSyscall,
         'Linux': SimCCAArch64LinuxSyscall,
+        'Darwin': SimCCAArch64LinuxSyscall, # This is actually wrong, apple has a weird ABI
     },
     'MIPS32': {
         'default': SimCCO32LinuxSyscall,

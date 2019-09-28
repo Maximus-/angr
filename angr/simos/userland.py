@@ -53,7 +53,7 @@ class SimUserland(SimOS):
         :param allow_unsupported:   Whether to return a "dummy" sycall instead of raising an unsupported exception
         """
         abi = self.syscall_abi(state)
-        print('SYSCALL: ' + state.regs.rax.__repr__())
+        print('SYSCALL: ' + state.regs.rax.__repr__() + ' from ' + state.regs.rip.__repr__())
 
         if state.os_name in SYSCALL_CC[state.arch.name]:
             cc = SYSCALL_CC[state.arch.name][state.os_name](state.arch)
