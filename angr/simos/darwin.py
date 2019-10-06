@@ -78,6 +78,10 @@ class SimDarwin(SimUserland):
         state.memory.store(newsp, argc, endness=state.arch.memory_endness)
         state.regs.sp = newsp
 
+        state.memory.store(newsp - 8, 0x100000000, endness=state.arch.memory_endness)
+
+        state.regs.sp -= 8
+
         # store argc argv envp auxv in the posix plugin
         state.posix.argv = argv
         state.posix.argc = argc
@@ -93,6 +97,9 @@ class SimDarwin(SimUserland):
     def state_blank(self, fs=None, concrete_fs=False, chroot=None, cwd=b'/Users/user', pathsep='/', **kwargs): 
         state = super(SimDarwin, self).state_blank(**kwargs)
         l.warning('Setting up blank state..')
+
+        self.dyld = self.project.loader.extern_object.allocate()
+
         return state
 
     def set_entry_register_values(self, state):
